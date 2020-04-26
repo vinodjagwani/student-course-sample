@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container my-5">
+    <h3> Add Student</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{/students/add}" th:object="${student}" method="POST">
+                    <div class="row">
+
+                        <div class="form-group col-md-8">
+                            <label for="firstName" class="col-form-label">First Name</label>
+                            <input type="text" th:field="*{firstName}" class="form-control" id="firstName"
+                                   placeholder="First Name">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="middleName" class="col-form-label">Middle Name</label>
+                            <input type="text" th:field="*{middleName}" class="form-control" id="middleName"
+                                   placeholder="First Name">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="lastName" class="col-form-label">Last Name</label>
+                            <input type="text" th:field="*{lastName}" class="form-control" id="lastName"
+                                   placeholder="Last Name">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="dob" class="col-form-label">DOB</label>
+                            <input type="text" th:field="*{dob}" class="form-control" id="dob"
+                                   placeholder="DOB Format(dd-MM-yyyy)">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="gender" class="col-form-label">Gender</label>
+                            <input type="text" th:field="*{gender}" class="form-control" id="gender"
+                                   placeholder="Gender">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="address.homeAddress" class="col-form-label">Home Address</label>
+                            <input type="text" th:field="*{address.homeAddress}" class="form-control"
+                                   id="address.homeAddress" placeholder="Home Address">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="address.apartmentNo" class="col-form-label">Apartment No</label>
+                            <input type="text" th:field="*{address.apartmentNo}" class="form-control"
+                                   id="address.apartmentNo" placeholder="Apartment No">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="address.city" class="col-form-label">City</label>
+                            <input type="text" th:field="*{address.city}" class="form-control" id="address.city"
+                                   placeholder="City">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="address.state" class="col-form-label">State</label>
+                            <input type="text" th:field="*{address.state}" class="form-control" id="address.state"
+                                   placeholder="State">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="address.zipCode" class="col-form-label">ZipCode</label>
+                            <input type="text" th:field="*{address.zipCode}" class="form-control" id="address.zipCode"
+                                   placeholder="ZipCode">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="address.country" class="col-form-label">Country</label>
+                            <input type="text" th:field="*{address.country}" class="form-control" id="address.country"
+                                   placeholder="Country">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="phoneNumber" class="col-form-label">Phone No</label>
+                            <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
+                                   placeholder="Phone No">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="email" class="col-form-label">Email</label>
+                            <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="registrationNumber" class="col-form-label">Registration No</label>
+                            <input type="text" th:field="*{registrationNumber}" class="form-control"
+                                   id="registrationNumber" placeholder="Registration No">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="courses" class="col-form-label">Courses</label>
+                            <select id="courses" name="courses" size="10" multiple="multiple" th:field="*{courseNames}">
+                                <option th:each="course : ${student.courses}" th:value="${course.id}"
+                                        th:text="${course.name}"></option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value="Add Student">
+                        </div>
+                        <div class="form-group col-md-8"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

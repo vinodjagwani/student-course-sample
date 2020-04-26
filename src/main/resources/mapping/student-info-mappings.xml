@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://dozer.sourceforge.net"
+          xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <!-- personal-info dto to personal-info entity -->
+    <mapping map-id="student-info-d-to-e">
+        <class-a>com.school.information.student.web.dto.StudentDTO</class-a>
+        <class-b>com.school.information.student.repository.entity.StudentEntity</class-b>
+        <field>
+            <a>firstName</a>
+            <b>firstName</b>
+        </field>
+        <field>
+            <a>middleName</a>
+            <b>middleName</b>
+        </field>
+        <field>
+            <a>lastName</a>
+            <b>lastName</b>
+        </field>
+        <field>
+            <a date-format="dd-MM-yyyy">dob</a>
+            <b>dob</b>
+        </field>
+        <field>
+            <a>gender</a>
+            <b>gender</b>
+        </field>
+        <field>
+            <a>address</a>
+            <b>address</b>
+        </field>
+        <field>
+            <a>phoneNumber</a>
+            <b>phoneNumber</b>
+        </field>
+        <field>
+            <a>email</a>
+            <b>email</b>
+        </field>
+        <field>
+            <a>courses</a>
+            <b>courses</b>
+        </field>
+    </mapping>
+
+    <mapping map-id="student-info-e-to-d">
+        <class-a>com.school.information.student.repository.entity.StudentEntity</class-a>
+        <class-b>com.school.information.student.web.dto.StudentDTO</class-b>
+        <field>
+            <a>id</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>firstName</a>
+            <b>firstName</b>
+        </field>
+        <field>
+            <a>middleName</a>
+            <b>middleName</b>
+        </field>
+        <field>
+            <a>lastName</a>
+            <b>lastName</b>
+        </field>
+        <field>
+            <a date-format="dd-MM-yyyy">dob</a>
+            <b>dob</b>
+        </field>
+        <field>
+            <a>gender</a>
+            <b>gender</b>
+        </field>
+        <field>
+            <a>address</a>
+            <b>address</b>
+        </field>
+        <field>
+            <a>phoneNumber</a>
+            <b>phoneNumber</b>
+        </field>
+        <field>
+            <a>email</a>
+            <b>email</b>
+        </field>
+        <field>
+            <a>courses</a>
+            <b>courses</b>
+        </field>
+    </mapping>
+</mappings>

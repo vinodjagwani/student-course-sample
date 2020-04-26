@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Student List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <style>
+    .pagination-centered {text-align: center;}
+    .disabled {pointer-events: none;opacity: 0.5;}
+    .pointer-disabled {pointer-events: none;}
+
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <h3> Search Student</h3>
+    <div class="card">
+        <div class="card-body">
+            <form action="#" th:action="@{/students/list}" method="GET">
+                <div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="id" class="col-form-label">Student ID:&nbsp;</label>
+                            <input type="text" th:name="id" id="id" placeholder="ID"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="firstName" class="col-form-label">First Name:&nbsp;</label>
+                            <input type="text" th:name="firstName" id="firstName" placeholder="First Name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="lastName" class="col-form-label">Last Name:&nbsp;</label>
+                            <input type="text" th:name="lastName" id="lastName" placeholder="lastName"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <input type="submit" class="btn btn-primary" value="Search">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="page-title">
+        <h2>
+            <span class="fa fa-arrow-circle-o-left"></span>Student List
+        </h2>
+    </div>
+    <div class="row">
+        <table class="table datatable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Home Address</th>
+                <th>Apartment No</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Country</th>
+                <th>Phone No</th>
+                <th>Email</th>
+                <th>Registration No</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.middleName}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.dob}"></td>
+                <td th:text="${student.gender}"></td>
+                <td th:text="${student.address.homeAddress}"></td>
+                <td th:text="${student.address.apartmentNo}"></td>
+                <td th:text="${student.address.city}"></td>
+                <td th:text="${student.address.state}"></td>
+                <td th:text="${student.address.zipCode}"></td>
+                <td th:text="${student.address.country}"></td>
+                <td th:text="${student.phoneNumber}"></td>
+                <td th:text="${student.email}"></td>
+                <td th:text="${student.registrationNumber}"></td>
+                <td><a th:href="@{/students/{id}(id=${student.id})}+@{/courses}" class=""><i
+                        class="fas fa-user-plus ml-2"></i>View Courses</a></td>
+                <td><a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-primary"><i
+                        class="fas fa-user-edit ml-2"></i></a></td>
+                <td><a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn btn-primary"><i
+                        class="fas fa-user-times ml-2"></i></a></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="form-group col-md-1">
+                <select class="form-control pagination" id="pageSizeSelect">
+                    <option th:each="pageSize : ${pageSizes}" th:text="${pageSize}" th:value="${pageSize}"
+                            th:selected="${pageSize} == ${selectedPageSize}"></option>
+                </select>
+            </div>
+            <div th:if="${students.totalPages != 1}"
+                 class="form-group col-md-11 pagination-centered">
+                <ul class="pagination">
+                    <li th:class="${students.number == 0} ? disabled"><a class="pageLink"
+                                                                         th:href="@{/students/list/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
+                    </li>
+                    <li th:class="${students.number == 0} ? disabled"><a class="pageLink"
+                                                                         th:href="@{/students/list/(pageSize=${selectedPageSize}, page=${students.number})}">&larr;</a>
+                    </li>
+                    <li
+                            th:class="${students.number == (page - 1)} ? 'active pointer-disabled'"
+                            th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+                        <a class="pageLink" th:href="@{/students/list/(pageSize=${selectedPageSize}, page=${page})}"
+                           th:text="${page}"></a>
+                    </li>
+                    <li
+                            th:class="${students.number + 1 == students.totalPages} ? disabled">
+                        <a class="pageLink"
+                           th:href="@{/students/list/(pageSize=${selectedPageSize}, page=${students.number + 2})}">&rarr;</a>
+                    </li>
+                    <li
+                            th:class="${students.number + 1 == students.totalPages} ? disabled">
+                        <a class="pageLink"
+                           th:href="@{/students/list/(pageSize=${selectedPageSize}, page=${students.totalPages})}">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-1">
+                <form action="#" th:action="@{/students}" method="GET" id="student-home-form">
+                    <a href="javascript:{}"
+                       onclick="document.getElementById('student-home-form').submit(); return false;">Go Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"
+        integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script th:inline="javascript">
+		/*<![CDATA[*/
+		$(document).ready(function() {
+		changePageAndSize();
+    });
+
+function changePageAndSize() {
+	$('#pageSizeSelect').change(function(evt) {
+		window.location.replace("/students/list?pageSize=" + this.value + "&page=1");
+	});
+}
+	/*]]>*/
+
+
+</script>
+
+</body>
+</html>

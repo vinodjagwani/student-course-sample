@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://dozer.sourceforge.net"
+          xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <!-- personal-info dto to personal-info entity -->
+    <mapping map-id="course-info-d-to-e">
+        <class-a>com.school.information.student.web.dto.CourseDTO</class-a>
+        <class-b>com.school.information.student.repository.entity.CourseEntity</class-b>
+        <field>
+            <a>name</a>
+            <b>name</b>
+        </field>
+    </mapping>
+
+    <mapping map-id="course-info-e-to-d">
+        <class-a>com.school.information.student.repository.entity.CourseEntity</class-a>
+        <class-b>com.school.information.student.web.dto.CourseDTO</class-b>
+        <field>
+            <a>id</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>name</a>
+            <b>name</b>
+        </field>
+    </mapping>
+</mappings>
