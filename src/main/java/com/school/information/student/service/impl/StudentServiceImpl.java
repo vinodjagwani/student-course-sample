@@ -5,6 +5,7 @@ import com.school.information.exception.ServiceException;
 import com.school.information.exception.constant.ErrorCodeEnum;
 import com.school.information.student.repository.StudentRepository;
 import com.school.information.student.repository.entity.StudentEntity;
+import com.school.information.student.service.StudentService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

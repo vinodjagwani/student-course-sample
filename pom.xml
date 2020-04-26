@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
     <groupId>com.student.information</groupId>
-    <artifactId>a7</artifactId>
+    <artifactId>student-course-sample</artifactId>
     <version>1.0</version>
     <name>student-course-sample</name>
     <description>student-course-sample</description>

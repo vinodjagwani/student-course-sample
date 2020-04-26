@@ -1,4 +1,4 @@
-package com.school.information.student.service.impl;
+package com.school.information.student.service;
 
 import com.querydsl.core.types.Predicate;
 import com.school.information.student.repository.entity.CourseEntity;

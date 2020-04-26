@@ -1,7 +1,7 @@
 package com.school.information.controller;
 
 
-import com.school.information.student.service.impl.StudentService;
+import com.school.information.student.service.StudentService;
 import com.school.information.student.web.constant.WebConstant;
 import com.school.information.student.web.dto.StudentDTO;
 import lombok.AccessLevel;

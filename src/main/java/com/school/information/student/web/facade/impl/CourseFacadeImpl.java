@@ -3,7 +3,7 @@ package com.school.information.student.web.facade.impl;
 import com.querydsl.core.types.Predicate;
 import com.school.information.student.repository.entity.CourseEntity;
 import com.school.information.student.repository.entity.QCourseEntity;
-import com.school.information.student.service.impl.CourseService;
+import com.school.information.student.service.CourseService;
 import com.school.information.student.web.dto.CourseDTO;
 import com.school.information.student.web.facade.CourseFacade;
 import lombok.AccessLevel;
@@ -24,7 +24,7 @@ import static com.school.information.student.web.constant.Constant.COURSE_INFO_E
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class CourseFacadeIml implements CourseFacade {
+public class CourseFacadeImpl implements CourseFacade {
 
     Mapper dozerMapper;
 
