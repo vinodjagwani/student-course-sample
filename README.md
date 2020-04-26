@@ -1,1 +1,1 @@
-##Crud Assignment 3
+##Student Courses relationship with jpa and thymleaf sample.
